@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top 10 Colors</title>
+</head>
+<body>
+    <h1>Upload an Image to Get Top 10 Colors</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*" required>
+        <input type="submit" value="Upload Image">
+    </form>
+
+    {% if top_colors %}
+    <h2>Top 10 Colors in the Uploaded Image</h2>
+    <img src="{{ image_path }}" alt="Uploaded Image" style="max-width: 300px;"/>
+    <ul>
+        {% for color in top_colors %}
+        <li style="background-color: {{ color }}; padding: 10px; color: white;">{{ color }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</body>
+</html>
